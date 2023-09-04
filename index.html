@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
   </head>
   <body>
     <div class="container">
       <div class="calculator">
         <div class="display">
-          <div class="equal-icon">=</div>
-
-          <div class="output"></div>
+          <div class="content">
+            <div class="input"></div>
+            <div class="output"></div>
+          </div>
         </div>
 
         <ul class="keys">
@@ -38,11 +45,26 @@
           <li data-key="2" class="key">2</li>
           <li data-key="3" class="key">3</li>
           <li data-key="+" class="key operator">+</li>
-          <li data-key="00" class="key">00</li>
+          <li data-key="-" class="key action">±</li>
           <li data-key="0" class="key">0</li>
           <li data-key="." class="key">.</li>
           <li data-key="=" class="key operator equal-key">=</li>
         </ul>
+      </div>
+
+      <div class="history">
+        <h3>Lịch sử</h3>
+
+        <div class="display-history">
+          <!-- <div class="content">
+            <div class="input"></div>
+            <div class="output"></div>
+          </div> -->
+        </div>
+
+        <div class="delete">
+          <i class="fa-solid fa-trash"></i>
+        </div>
       </div>
     </div>
 
