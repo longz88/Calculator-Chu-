@@ -14,21 +14,22 @@ keys.forEach((key) => {
   });
 });
 
-// xử lí tính toán
+// calculator
 function handleCalculator(keyValue) {
   if (keyValue === "=" && input !== "") {
-    input = input.replace("%", "/100");
-    displayOutput.innerHTML = handleDecimal(eval(input));
+    const output = input.replace("%", "/100");
+    displayInput.innerHTML = input;
+    displayOutput.innerHTML = handleDecimal(eval(output));
     handleDisplayHistory(displayInput.innerHTML, displayOutput.innerHTML);
   } else if (keyValue === "AC") {
     input = "";
     displayInput.innerHTML = "";
     displayOutput.innerHTML = "";
   } else if (keyValue === "DE") {
-    input = input.toString().slice(0, -1);
+    input = "";
     displayInput.innerHTML = input;
   } else if (keyValue === "±") {
-    input = -input;
+    input = "-" + input;
     displayInput.innerHTML = input;
   } else {
     if (
@@ -42,7 +43,7 @@ function handleCalculator(keyValue) {
   displayInput.innerHTML = input;
 }
 
-// thêm math lịch sử
+// add math history
 function handleDisplayHistory(input, output) {
   const content = `<div class="content">
   <div class="input">${input}</div>
@@ -52,28 +53,29 @@ function handleDisplayHistory(input, output) {
   displayHistory.insertAdjacentHTML("afterbegin", content);
 }
 
-// xóa math lịch sử
+// delete math history
 deleteDisplay.addEventListener("click", () => {
   displayHistory.innerHTML = "";
 });
 
-// xử lí số thập phân
+// handle decimal
 function handleDecimal(output) {
   let outputString = output.toString();
-  let decimal = outputString.split(".")[1];
-  outputString = outputString.split(".")[0];
+  let decimalBefore = outputString.split(".")[0];
+  decimalAfter = outputString.split(".")[1];
 
-  let outputArray = outputString.split("");
+  let outputArray = decimalBefore.split("");
 
   if (outputArray.length > 3) {
+    console.log(outputArray.length);
     for (let i = outputArray.length - 3; i > 0; i -= 3) {
       outputArray.splice(i, 0, ",");
     }
   }
 
-  if (decimal) {
+  if (decimalAfter) {
     outputArray.push(".");
-    outputArray.push(decimal);
+    outputArray.push(decimalAfter);
   }
 
   return outputArray.join("");
